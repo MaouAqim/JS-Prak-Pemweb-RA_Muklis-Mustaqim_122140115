@@ -245,7 +245,7 @@ body {
 
 body.dark-theme {
     --background-color: #333;
-    --text-color: #fff;
+    --text-color: #fff; /* Pastikan teks berwarna putih */
     --btn-bg-primary: #006400;
     --btn-bg-danger: #d9534f;
     --btn-bg-secondary: #5A5A5A;
