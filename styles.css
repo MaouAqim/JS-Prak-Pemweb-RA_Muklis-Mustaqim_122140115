@@ -1,0 +1,328 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container utama dan body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    flex-direction: column;
+}
+
+/* Container task-list */
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+    background: var(--background-color);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    border: 3px solid var(--input-border);
+    text-align: center;
+}
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* Task Input Section */
+.task-input-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input-section input,
+.task-input-section select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.task-input-section button {
+    padding: 10px 15px;
+    background-color: var(--btn-bg-primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Styling untuk task list */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Rapi-kan task item */
+.task-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    min-height: 60px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling untuk judul dan due date */
+.task-item span {
+    display: inline-block;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+}
+
+/* Nama tugas yang lebih menjorok ke kiri */
+.task-item .task-title {
+    flex-grow: 1;
+    margin-right: 10px;
+    max-width: 70%; /* Membuat nama task lebih lebar */
+    overflow-wrap: break-word;
+    text-align: left; /* Mengatur teks nama tugas agar rata kiri */
+}
+
+/* Priority tetap di tempat dan sedikit ke tengah */
+.task-item .task-priority {
+    margin-left: 15px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Button aksi di sebelah kanan */
+.task-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 10px;
+}
+
+/* Tombol */
+.complete-btn, .edit-btn, .delete-btn, .add-task-btn, .clear-all-btn {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.complete-btn {
+    background-color: var(--btn-bg-secondary);
+}
+
+.edit-btn {
+    background-color: var(--btn-bg-primary);
+}
+
+.delete-btn {
+    background-color: var(--btn-bg-danger);
+}
+
+.add-task-btn {
+    background-color: var(--btn-bg-primary);
+}
+
+.clear-all-btn {
+    background-color: var(--btn-bg-danger);
+}
+
+.complete-btn:hover, .edit-btn:hover, .delete-btn:hover {
+    background-color: #444;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#taskProgress {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Styling for Completed, Pending, and Overdue Tasks */
+.task-item.completed {
+    background-color: #cce5ff; /* Light blue for completed tasks */
+    border-left: 5px solid blue; /* Blue border for completed tasks */
+}
+
+.task-item.pending {
+    background-color: #f2f2f2; /* Light gray for pending tasks */
+    border-left: 5px solid gray; /* Gray border for pending tasks */
+}
+
+.task-item.overdue {
+    background-color: #ffcccc; /* Light red for overdue tasks */
+    border-left: 5px solid red; /* Red border for overdue tasks */
+}
+
+/* Modal Styles */
+.delete-confirmation {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--modal-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.delete-confirmation.show {
+    display: block;
+}
+
+.confirm-btn, .cancel-btn {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.confirm-btn {
+    background-color: var(--btn-bg-primary);
+    color: #fff;
+}
+
+.cancel-btn {
+    background-color: var(--btn-bg-secondary);
+    color: #fff;
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section select {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+}
+
+/* Dark Theme Variables */
+:root {
+    --background-color: #fff;
+    --text-color: #333;
+    --btn-bg-primary: #4CAF50;
+    --btn-bg-danger: #FF6347;
+    --btn-bg-secondary: #8C8C8C;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --input-bg: #f9f9f9;
+    --input-border: #ddd;
+    --modal-bg: #fff;
+}
+
+body.dark-theme {
+    --background-color: #333;
+    --text-color: #fff;
+    --btn-bg-primary: #006400;
+    --btn-bg-danger: #d9534f;
+    --btn-bg-secondary: #5A5A5A;
+    --input-bg: #444;
+    --input-border: #555;
+    --modal-bg: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .task-input-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-input-section input,
+    .task-input-section select,
+    .task-input-section button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .task-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .task-item .task-title {
+        max-width: 100%;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .task-item {
+        padding: 10px;
+    }
+
+    .task-input-section input,
+    .task-input-section select,
+    .task-input-section button {
+        padding: 8px;
+    }
+
+    .complete-btn,
+    .edit-btn,
+    .delete-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .task-actions button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    #taskProgress {
+        height: 15px;
+    }
+}
